@@ -1,0 +1,601 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		E7A100000000000000000001 /* RadioToolApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7A10000000000000000003C /* RadioToolApp.swift */; };
+		E7A100000000000000000002 /* AudioToolError.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7A10000000000000000003D /* AudioToolError.swift */; };
+		E7A100000000000000000003 /* TimeFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7A10000000000000000003E /* TimeFormat.swift */; };
+		E7A100000000000000000004 /* AudioSamples.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7A10000000000000000003F /* AudioSamples.swift */; };
+		E7A100000000000000000005 /* Recording.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7A100000000000000000040 /* Recording.swift */; };
+		E7A100000000000000000006 /* EditSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7A100000000000000000041 /* EditSession.swift */; };
+		E7A100000000000000000007 /* AudioFileStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7A100000000000000000042 /* AudioFileStore.swift */; };
+		E7A100000000000000000008 /* RecorderEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7A100000000000000000043 /* RecorderEngine.swift */; };
+		E7A100000000000000000009 /* PlayerEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7A100000000000000000044 /* PlayerEngine.swift */; };
+		E7A10000000000000000000A /* STFT.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7A100000000000000000045 /* STFT.swift */; };
+		E7A10000000000000000000B /* SpectralDenoiser.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7A100000000000000000046 /* SpectralDenoiser.swift */; };
+		E7A10000000000000000000C /* LibraryStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7A100000000000000000047 /* LibraryStore.swift */; };
+		E7A10000000000000000000D /* LibraryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7A100000000000000000048 /* LibraryView.swift */; };
+		E7A10000000000000000000E /* RecorderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7A100000000000000000049 /* RecorderModel.swift */; };
+		E7A10000000000000000000F /* RecorderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7A10000000000000000004A /* RecorderView.swift */; };
+		E7A100000000000000000010 /* WaveformPeaks.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7A10000000000000000004B /* WaveformPeaks.swift */; };
+		E7A100000000000000000011 /* WaveformView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7A10000000000000000004C /* WaveformView.swift */; };
+		E7A100000000000000000012 /* EditorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7A10000000000000000004D /* EditorModel.swift */; };
+		E7A100000000000000000013 /* EditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7A10000000000000000004E /* EditorView.swift */; };
+		E7A100000000000000000014 /* AudioToolError.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7A10000000000000000003D /* AudioToolError.swift */; };
+		E7A100000000000000000015 /* AudioSamples.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7A10000000000000000003F /* AudioSamples.swift */; };
+		E7A100000000000000000016 /* EditSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7A100000000000000000041 /* EditSession.swift */; };
+		E7A100000000000000000017 /* AudioFileStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7A100000000000000000042 /* AudioFileStore.swift */; };
+		E7A100000000000000000018 /* STFT.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7A100000000000000000045 /* STFT.swift */; };
+		E7A100000000000000000019 /* SpectralDenoiser.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7A100000000000000000046 /* SpectralDenoiser.swift */; };
+		E7A10000000000000000001A /* AudioEditingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7A10000000000000000004F /* AudioEditingTests.swift */; };
+		E7A10000000000000000001C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E7A10000000000000000001B /* Assets.xcassets */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		E7A10000000000000000001D /* RadioTool.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RadioTool.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E7A10000000000000000001E /* RadioToolTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RadioToolTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		E7A10000000000000000001B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		E7A10000000000000000004F /* AudioEditingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioEditingTests.swift; sourceTree = "<group>"; };
+		E7A100000000000000000042 /* AudioFileStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioFileStore.swift; sourceTree = "<group>"; };
+		E7A10000000000000000003F /* AudioSamples.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioSamples.swift; sourceTree = "<group>"; };
+		E7A10000000000000000003D /* AudioToolError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioToolError.swift; sourceTree = "<group>"; };
+		E7A100000000000000000041 /* EditSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditSession.swift; sourceTree = "<group>"; };
+		E7A10000000000000000004D /* EditorModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorModel.swift; sourceTree = "<group>"; };
+		E7A10000000000000000004E /* EditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorView.swift; sourceTree = "<group>"; };
+		E7A100000000000000000047 /* LibraryStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryStore.swift; sourceTree = "<group>"; };
+		E7A100000000000000000048 /* LibraryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryView.swift; sourceTree = "<group>"; };
+		E7A100000000000000000044 /* PlayerEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerEngine.swift; sourceTree = "<group>"; };
+		E7A10000000000000000003C /* RadioToolApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioToolApp.swift; sourceTree = "<group>"; };
+		E7A100000000000000000043 /* RecorderEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecorderEngine.swift; sourceTree = "<group>"; };
+		E7A100000000000000000049 /* RecorderModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecorderModel.swift; sourceTree = "<group>"; };
+		E7A10000000000000000004A /* RecorderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecorderView.swift; sourceTree = "<group>"; };
+		E7A100000000000000000040 /* Recording.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recording.swift; sourceTree = "<group>"; };
+		E7A100000000000000000045 /* STFT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STFT.swift; sourceTree = "<group>"; };
+		E7A100000000000000000046 /* SpectralDenoiser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpectralDenoiser.swift; sourceTree = "<group>"; };
+		E7A10000000000000000003E /* TimeFormat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeFormat.swift; sourceTree = "<group>"; };
+		E7A10000000000000000004B /* WaveformPeaks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaveformPeaks.swift; sourceTree = "<group>"; };
+		E7A10000000000000000004C /* WaveformView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaveformView.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		E7A100000000000000000020 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E7A100000000000000000023 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		E7A100000000000000000027 /* RadioTool */ = {
+			isa = PBXGroup;
+			children = (
+				E7A100000000000000000029 /* RadioTool */,
+				E7A100000000000000000032 /* RadioToolTests */,
+				E7A100000000000000000028 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		E7A100000000000000000028 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E7A10000000000000000001D /* RadioTool.app */,
+				E7A10000000000000000001E /* RadioToolTests.xctest */,
+			);
+			sourceTree = "<group>";
+		};
+		E7A100000000000000000029 /* RadioTool */ = {
+			isa = PBXGroup;
+			children = (
+				E7A10000000000000000003C /* RadioToolApp.swift */,
+				E7A10000000000000000002A /* Support */,
+				E7A10000000000000000002B /* Models */,
+				E7A10000000000000000002C /* Audio */,
+				E7A10000000000000000002E /* Features */,
+				E7A10000000000000000001B /* Assets.xcassets */,
+			);
+			path = RadioTool;
+			sourceTree = "<group>";
+		};
+		E7A10000000000000000002A /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				E7A10000000000000000003D /* AudioToolError.swift */,
+				E7A10000000000000000003E /* TimeFormat.swift */,
+			);
+			path = Support;
+			sourceTree = "<group>";
+		};
+		E7A10000000000000000002B /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				E7A10000000000000000003F /* AudioSamples.swift */,
+				E7A100000000000000000041 /* EditSession.swift */,
+				E7A100000000000000000040 /* Recording.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		E7A10000000000000000002C /* Audio */ = {
+			isa = PBXGroup;
+			children = (
+				E7A100000000000000000042 /* AudioFileStore.swift */,
+				E7A100000000000000000044 /* PlayerEngine.swift */,
+				E7A100000000000000000043 /* RecorderEngine.swift */,
+				E7A10000000000000000002D /* Denoise */,
+			);
+			path = Audio;
+			sourceTree = "<group>";
+		};
+		E7A10000000000000000002D /* Denoise */ = {
+			isa = PBXGroup;
+			children = (
+				E7A100000000000000000046 /* SpectralDenoiser.swift */,
+				E7A100000000000000000045 /* STFT.swift */,
+			);
+			path = Denoise;
+			sourceTree = "<group>";
+		};
+		E7A10000000000000000002E /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				E7A10000000000000000002F /* Library */,
+				E7A100000000000000000030 /* Recorder */,
+				E7A100000000000000000031 /* Editor */,
+			);
+			path = Features;
+			sourceTree = "<group>";
+		};
+		E7A10000000000000000002F /* Library */ = {
+			isa = PBXGroup;
+			children = (
+				E7A100000000000000000047 /* LibraryStore.swift */,
+				E7A100000000000000000048 /* LibraryView.swift */,
+			);
+			path = Library;
+			sourceTree = "<group>";
+		};
+		E7A100000000000000000030 /* Recorder */ = {
+			isa = PBXGroup;
+			children = (
+				E7A100000000000000000049 /* RecorderModel.swift */,
+				E7A10000000000000000004A /* RecorderView.swift */,
+			);
+			path = Recorder;
+			sourceTree = "<group>";
+		};
+		E7A100000000000000000031 /* Editor */ = {
+			isa = PBXGroup;
+			children = (
+				E7A10000000000000000004D /* EditorModel.swift */,
+				E7A10000000000000000004E /* EditorView.swift */,
+				E7A10000000000000000004B /* WaveformPeaks.swift */,
+				E7A10000000000000000004C /* WaveformView.swift */,
+			);
+			path = Editor;
+			sourceTree = "<group>";
+		};
+		E7A100000000000000000032 /* RadioToolTests */ = {
+			isa = PBXGroup;
+			children = (
+				E7A10000000000000000004F /* AudioEditingTests.swift */,
+			);
+			path = RadioToolTests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		E7A100000000000000000024 /* RadioTool */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E7A100000000000000000034 /* Build configuration list for PBXNativeTarget "RadioTool" */;
+			buildPhases = (
+				E7A10000000000000000001F /* Sources */,
+				E7A100000000000000000020 /* Frameworks */,
+				E7A100000000000000000021 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = RadioTool;
+			productName = RadioTool;
+			productReference = E7A10000000000000000001D /* RadioTool.app */;
+			productType = "com.apple.product-type.application";
+		};
+		E7A100000000000000000025 /* RadioToolTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E7A100000000000000000035 /* Build configuration list for PBXNativeTarget "RadioToolTests" */;
+			buildPhases = (
+				E7A100000000000000000022 /* Sources */,
+				E7A100000000000000000023 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = RadioToolTests;
+			productName = RadioToolTests;
+			productReference = E7A10000000000000000001E /* RadioToolTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		E7A100000000000000000026 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1540;
+				LastUpgradeCheck = 1540;
+				TargetAttributes = {
+					E7A100000000000000000024 = {
+						CreatedOnToolsVersion = 15.4;
+					};
+					E7A100000000000000000025 = {
+						CreatedOnToolsVersion = 15.4;
+					};
+				};
+			};
+			buildConfigurationList = E7A100000000000000000033 /* Build configuration list for PBXProject "RadioTool" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = zh-Hans;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+				"zh-Hans",
+			);
+			mainGroup = E7A100000000000000000027;
+			productRefGroup = E7A100000000000000000028 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				E7A100000000000000000024 /* RadioTool */,
+				E7A100000000000000000025 /* RadioToolTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		E7A100000000000000000021 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E7A10000000000000000001C /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		E7A10000000000000000001F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E7A100000000000000000001 /* RadioToolApp.swift in Sources */,
+				E7A100000000000000000002 /* AudioToolError.swift in Sources */,
+				E7A100000000000000000003 /* TimeFormat.swift in Sources */,
+				E7A100000000000000000004 /* AudioSamples.swift in Sources */,
+				E7A100000000000000000005 /* Recording.swift in Sources */,
+				E7A100000000000000000006 /* EditSession.swift in Sources */,
+				E7A100000000000000000007 /* AudioFileStore.swift in Sources */,
+				E7A100000000000000000008 /* RecorderEngine.swift in Sources */,
+				E7A100000000000000000009 /* PlayerEngine.swift in Sources */,
+				E7A10000000000000000000A /* STFT.swift in Sources */,
+				E7A10000000000000000000B /* SpectralDenoiser.swift in Sources */,
+				E7A10000000000000000000C /* LibraryStore.swift in Sources */,
+				E7A10000000000000000000D /* LibraryView.swift in Sources */,
+				E7A10000000000000000000E /* RecorderModel.swift in Sources */,
+				E7A10000000000000000000F /* RecorderView.swift in Sources */,
+				E7A100000000000000000010 /* WaveformPeaks.swift in Sources */,
+				E7A100000000000000000011 /* WaveformView.swift in Sources */,
+				E7A100000000000000000012 /* EditorModel.swift in Sources */,
+				E7A100000000000000000013 /* EditorView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E7A100000000000000000022 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E7A100000000000000000014 /* AudioToolError.swift in Sources */,
+				E7A100000000000000000015 /* AudioSamples.swift in Sources */,
+				E7A100000000000000000016 /* EditSession.swift in Sources */,
+				E7A100000000000000000017 /* AudioFileStore.swift in Sources */,
+				E7A100000000000000000018 /* STFT.swift in Sources */,
+				E7A100000000000000000019 /* SpectralDenoiser.swift in Sources */,
+				E7A10000000000000000001A /* AudioEditingTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		E7A100000000000000000036 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				SDKROOT = auto;
+				SWIFT_VERSION = 5.0;
+
+				ENABLE_TESTABILITY = YES;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				ONLY_ACTIVE_ARCH = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+
+			};
+			name = Debug;
+		};
+		E7A100000000000000000037 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				SDKROOT = auto;
+				SWIFT_VERSION = 5.0;
+
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+
+			};
+			name = Release;
+		};
+		E7A100000000000000000038 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "";
+				"CODE_SIGN_ENTITLEMENTS[sdk=macosx*]" = RadioTool/RadioTool.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=iphonesimulator*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
+				CODE_SIGN_STYLE = Manual;
+				"CODE_SIGNING_ALLOWED[sdk=iphonesimulator*]" = NO;
+				"CODE_SIGNING_REQUIRED[sdk=iphonesimulator*]" = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "录音剪辑";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.music";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "需要使用麦克风来录制音频。";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.enhoo.radioTool;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				TARGETED_DEVICE_FAMILY = 1;
+
+			};
+			name = Debug;
+		};
+		E7A100000000000000000039 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "";
+				"CODE_SIGN_ENTITLEMENTS[sdk=macosx*]" = RadioTool/RadioTool.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=iphonesimulator*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
+				CODE_SIGN_STYLE = Manual;
+				"CODE_SIGNING_ALLOWED[sdk=iphonesimulator*]" = NO;
+				"CODE_SIGNING_REQUIRED[sdk=iphonesimulator*]" = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "录音剪辑";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.music";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "需要使用麦克风来录制音频。";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.enhoo.radioTool;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				TARGETED_DEVICE_FAMILY = 1;
+
+			};
+			name = Release;
+		};
+		E7A10000000000000000003A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+
+				BUNDLE_LOADER = "";
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.enhoo.radioToolTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SUPPORTED_PLATFORMS = macosx;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				TEST_HOST = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+
+			};
+			name = Debug;
+		};
+		E7A10000000000000000003B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+
+				BUNDLE_LOADER = "";
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.enhoo.radioToolTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SUPPORTED_PLATFORMS = macosx;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				TEST_HOST = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		E7A100000000000000000033 /* Build configuration list for PBXProject "RadioTool" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E7A100000000000000000036 /* Debug */,
+				E7A100000000000000000037 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E7A100000000000000000034 /* Build configuration list for PBXNativeTarget "RadioTool" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E7A100000000000000000038 /* Debug */,
+				E7A100000000000000000039 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E7A100000000000000000035 /* Build configuration list for PBXNativeTarget "RadioToolTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E7A10000000000000000003A /* Debug */,
+				E7A10000000000000000003B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = E7A100000000000000000026 /* Project object */;
+}
