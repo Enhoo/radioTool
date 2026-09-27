@@ -5,10 +5,25 @@ private struct LibraryIndex: Codable {
     var recordings: [Recording]
 }
 
+final class UnsavedWork {
+    var recordingID: UUID?
+    var isDirty = false
+    var isProcessing = false
+    var save: () -> Void = {}
+    var saveAsNew: () -> UUID? = { nil }
+
+    func resetActions() {
+        save = {}
+        saveAsNew = { nil }
+    }
+}
+
 @Observable
 final class LibraryStore {
     private(set) var recordings: [Recording] = []
     var lastError: String?
+    var confirmUnsaved = false
+    let unsaved = UnsavedWork()
 
     private let directory: URL
     private let indexURL: URL
@@ -66,6 +81,11 @@ final class LibraryStore {
         try add(samples: samples, title: title)
     }
 
+    @discardableResult
+    func saveAsNew(samples: AudioSamples, title: String) throws -> UUID {
+        try add(samples: samples, title: title)
+    }
+
     func replaceAudio(id: UUID, samples: AudioSamples) throws {
         guard let index = recordings.firstIndex(where: { $0.id == id }) else { return }
         let destination = directory.appendingPathComponent(recordings[index].fileName)
@@ -90,7 +110,8 @@ final class LibraryStore {
         try? saveIndex()
     }
 
-    private func add(samples: AudioSamples, title: String) throws {
+    @discardableResult
+    private func add(samples: AudioSamples, title: String) throws -> UUID {
         let id = UUID()
         let fileName = "\(id.uuidString).wav"
         try AudioFileStore.write(samples, to: directory.appendingPathComponent(fileName))
@@ -105,6 +126,7 @@ final class LibraryStore {
         )
         recordings.insert(recording, at: 0)
         try saveIndex()
+        return id
     }
 
     private func load() throws {

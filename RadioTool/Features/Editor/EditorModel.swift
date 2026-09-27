@@ -1,6 +1,26 @@
 import Foundation
 import Observation
 
+enum PlaybackRate: Double, CaseIterable, Identifiable {
+    case half = 0.5
+    case normal = 1
+    case faster = 1.5
+    case double = 2
+    case triple = 3
+
+    var id: Double { rawValue }
+
+    var title: String {
+        switch self {
+        case .half: return "0.5倍"
+        case .normal: return "1倍"
+        case .faster: return "1.5倍"
+        case .double: return "2倍"
+        case .triple: return "3倍"
+        }
+    }
+}
+
 enum DenoiseScope: String, CaseIterable, Identifiable {
     case entire
     case selection
@@ -22,6 +42,7 @@ final class EditorModel {
     private let player = PlayerEngine()
     private var session = EditSession(samples: AudioSamples(sampleRate: 48_000, channels: [[]]))
     private var hasLoaded = false
+    private var clipboard: AudioSamples?
     private var progressSink: ProgressSink?
     private var progressTimer: Timer?
 
@@ -29,19 +50,34 @@ final class EditorModel {
     var isLoading = true
     var isProcessing = false
     var isPlaying = false
+    var playbackRate: PlaybackRate = .normal {
+        didSet {
+            player.rate = Float(playbackRate.rawValue)
+        }
+    }
     var isDirty = false
     var progress: Double = 0
     var strength: Double = 70
     var useSelectionAsNoise = false
     var scope: DenoiseScope = .entire
+    var rumble: Double = 70
+    var gainDecibels: Double = 6
+    var effectScope: DenoiseScope = .entire
+    var processingTitle = "正在处理…"
     var statusMessage: String?
     var errorMessage: String?
     var peaks = WaveformPeaks.empty
+    var waveformRevision = 0
+
+    var waveformChannels: [[Float]] {
+        session.samples.channels
+    }
     var selectionLower = 0
     var selectionUpper = 0
     var playhead = 0
     var canUndo = false
     var canRedo = false
+    var canInsert = false
     var frameCount = 0
     var sampleRate = 48_000.0
 
@@ -93,6 +129,7 @@ final class EditorModel {
                 session = EditSession(samples: samples)
                 sync()
                 peaks = waveform
+                waveformRevision += 1
                 isLoading = false
             }
         } catch {
@@ -131,14 +168,26 @@ final class EditorModel {
         }
     }
 
+    var hasSelection: Bool { selectionUpper > selectionLower }
+
     func setSelection(lower: Int, upper: Int) {
         session.setSelection(lower: lower, upper: upper)
         selectionLower = session.selection.lowerBound
         selectionUpper = session.selection.upperBound
     }
 
+    func clearSelection() {
+        guard hasSelection else { return }
+        setSelection(lower: 0, upper: 0)
+        statusMessage = "已取消选中。"
+    }
+
     func trim() {
         stopPlayback()
+        guard session.selection.count > 0 else {
+            statusMessage = "请先在波形上按住拖动，选出一段音频。"
+            return
+        }
         guard session.trimToSelection() else {
             statusMessage = "选区已经覆盖整段音频。"
             return
@@ -148,11 +197,36 @@ final class EditorModel {
 
     func deleteSelection() {
         stopPlayback()
+        guard session.selection.count > 0 else {
+            statusMessage = "请先在波形上按住拖动，选出一段音频。"
+            return
+        }
         guard session.deleteSelection() else {
             errorMessage = AudioToolError.nothingToDelete.errorDescription
             return
         }
         finishEdit(message: "已删除选区。")
+    }
+
+    func copySelection() {
+        guard session.selection.count > 0 else {
+            statusMessage = "请先在波形上按住拖动，选出要复制的一段。"
+            return
+        }
+        clipboard = session.samples.trimming(to: session.selection)
+        canInsert = true
+        setSelection(lower: 0, upper: 0)
+        statusMessage = "已复制选区。把红线移到目标位置后，点插入。"
+    }
+
+    func insertCopy() {
+        guard let clipboard, clipboard.frameCount > 0 else {
+            statusMessage = "还没有复制内容。"
+            return
+        }
+        stopPlayback()
+        session.insert(clipboard, after: session.playhead)
+        finishEdit(message: "已插入到红线后面。")
     }
 
     func undo() {
@@ -180,6 +254,7 @@ final class EditorModel {
         isProcessing = true
         progress = 0
         statusMessage = nil
+        processingTitle = "正在去噪…"
         let sink = ProgressSink()
         progressSink = sink
         startProgressTimer(sink)
@@ -202,13 +277,59 @@ final class EditorModel {
         }
     }
 
+    func applyRumble() {
+        let amount = Float(rumble / 100)
+        guard amount > 0 else { return }
+        runOfflineEdit(
+            processingTitle: "正在添加震感…",
+            success: "震感已加上，保存后才会写回文件。"
+        ) { channels, rate, range, report in
+            AudioEffects.applyRumble(
+                channels: channels,
+                sampleRate: rate,
+                strength: amount,
+                applyFrameRange: range,
+                progress: report
+            )
+        }
+    }
+
+    func applyGain() {
+        let decibels = Float(gainDecibels)
+        guard decibels > 0 else { return }
+        runOfflineEdit(
+            processingTitle: "正在加大音量…",
+            success: "音量已加大，保存后才会写回文件。"
+        ) { channels, rate, range, report in
+            AudioEffects.applyGain(
+                channels: channels,
+                sampleRate: rate,
+                decibels: decibels,
+                applyFrameRange: range,
+                progress: report
+            )
+        }
+    }
+
     func save() {
         do {
             try store.replaceAudio(id: recordingID, samples: session.samples)
             isDirty = false
-            statusMessage = "已保存。"
+            statusMessage = "已保存到原文件。"
         } catch {
             errorMessage = error.localizedDescription
+        }
+    }
+
+    @discardableResult
+    func saveAsNew() -> UUID? {
+        let trimmed = title.trimmingCharacters(in: .whitespacesAndNewlines)
+        let copyTitle = trimmed.isEmpty ? "录音副本" : "\(trimmed) 副本"
+        do {
+            return try store.saveAsNew(samples: session.samples, title: copyTitle)
+        } catch {
+            errorMessage = error.localizedDescription
+            return nil
         }
     }
 
@@ -230,9 +351,43 @@ final class EditorModel {
         isPlaying = false
     }
 
+    private func runOfflineEdit(
+        processingTitle: String,
+        success: String,
+        transform: @escaping @Sendable ([[Float]], Double, Range<Int>, @escaping (Double) -> Void) -> [[Float]]
+    ) {
+        guard !isProcessing else { return }
+        stopPlayback()
+        let channels = session.samples.channels
+        let rate = session.samples.sampleRate
+        let applyRange = effectScope == .selection ? session.selection : 0..<session.samples.frameCount
+        guard applyRange.count > 1 else {
+            statusMessage = "选区太短，无法添加效果。"
+            return
+        }
+        isProcessing = true
+        progress = 0
+        statusMessage = nil
+        self.processingTitle = processingTitle
+        let sink = ProgressSink()
+        progressSink = sink
+        startProgressTimer(sink)
+        Task { @MainActor in
+            let updated = await Task.detached(priority: .userInitiated) {
+                transform(channels, rate, applyRange) { sink.set($0) }
+            }.value
+            self.stopProgressTimer()
+            self.session.replace(with: AudioSamples(sampleRate: rate, channels: updated))
+            self.progress = 1
+            self.isProcessing = false
+            self.finishEdit(message: success)
+        }
+    }
+
     private func finishEdit(message: String?) {
         sync()
         peaks = WaveformPeaks.make(channels: session.samples.channels)
+        waveformRevision += 1
         isDirty = true
         if let message {
             statusMessage = message

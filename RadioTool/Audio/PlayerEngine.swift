@@ -4,22 +4,32 @@ import Foundation
 final class PlayerEngine {
     private let engine = AVAudioEngine()
     private let player = AVAudioPlayerNode()
+    private let timePitch = AVAudioUnitTimePitch()
     private var timer: Timer?
     private var playToken = 0
     private var originFrame = 0
     private var totalFrames = 0
+    private var sampleRate = 48_000.0
     private(set) var isPlaying = false
     var onFrame: ((Int) -> Void)?
     var onFinish: (() -> Void)?
+    var rate: Float = 1 {
+        didSet {
+            timePitch.rate = min(max(rate, 0.5), 3)
+        }
+    }
 
     init() {
         engine.attach(player)
+        engine.attach(timePitch)
+        timePitch.rate = 1
     }
 
     func play(samples: AudioSamples, from frame: Int) throws {
         stop()
         guard samples.frameCount > 0, samples.channelCount > 0 else { return }
-        let start = min(max(0, frame), samples.frameCount - 1)
+        let requested = min(max(0, frame), samples.frameCount - 1)
+        let start = samples.frameCount - requested <= 1 ? 0 : requested
         guard let format = AVAudioFormat(
             commonFormat: .pcmFormatFloat32,
             sampleRate: samples.sampleRate,
@@ -32,17 +42,20 @@ final class PlayerEngine {
         if engine.isRunning {
             engine.stop()
         }
-        engine.connect(player, to: engine.mainMixerNode, format: format)
+        engine.connect(player, to: timePitch, format: format)
+        engine.connect(timePitch, to: engine.mainMixerNode, format: format)
+        timePitch.rate = min(max(rate, 0.5), 3)
         engine.prepare()
         try engine.start()
         playToken += 1
         let token = playToken
         originFrame = start
         totalFrames = samples.frameCount
+        sampleRate = samples.sampleRate
         player.scheduleBuffer(buffer, completionCallbackType: .dataPlayedBack) { [weak self] _ in
             DispatchQueue.main.async { [weak self] in
                 guard let self, self.playToken == token else { return }
-                self.finish(at: self.totalFrames > 0 ? self.totalFrames - 1 : 0)
+                self.finish()
             }
         }
         player.play()
@@ -63,17 +76,18 @@ final class PlayerEngine {
         playToken += 1
         timer?.invalidate()
         timer = nil
-        if player.isPlaying {
-            player.stop()
-        }
+        player.stop()
         isPlaying = false
     }
 
-    private func finish(at frame: Int) {
+    private func finish() {
+        let restart = originFrame
+        playToken += 1
         timer?.invalidate()
         timer = nil
+        player.stop()
         isPlaying = false
-        onFrame?(frame)
+        onFrame?(restart)
         onFinish?()
     }
 
@@ -88,7 +102,9 @@ final class PlayerEngine {
     private func captureFrame() {
         guard let nodeTime = player.lastRenderTime,
               let playerTime = player.playerTime(forNodeTime: nodeTime) else { return }
-        let frame = originFrame + Int(playerTime.sampleTime)
+        let rendered = originFrame + Int(playerTime.sampleTime)
+        let pending = Int((timePitch.latency * sampleRate * Double(timePitch.rate)).rounded())
+        let frame = rendered - pending
         let clamped = min(max(originFrame, frame), max(originFrame, totalFrames - 1))
         onFrame?(clamped)
     }

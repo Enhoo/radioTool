@@ -18,12 +18,14 @@
 		E7A100000000000000000009 /* PlayerEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7A100000000000000000044 /* PlayerEngine.swift */; };
 		E7A10000000000000000000A /* STFT.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7A100000000000000000045 /* STFT.swift */; };
 		E7A10000000000000000000B /* SpectralDenoiser.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7A100000000000000000046 /* SpectralDenoiser.swift */; };
+		E7A100000000000000000051 /* AudioEffects.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7A100000000000000000050 /* AudioEffects.swift */; };
 		E7A10000000000000000000C /* LibraryStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7A100000000000000000047 /* LibraryStore.swift */; };
 		E7A10000000000000000000D /* LibraryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7A100000000000000000048 /* LibraryView.swift */; };
 		E7A10000000000000000000E /* RecorderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7A100000000000000000049 /* RecorderModel.swift */; };
 		E7A10000000000000000000F /* RecorderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7A10000000000000000004A /* RecorderView.swift */; };
 		E7A100000000000000000010 /* WaveformPeaks.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7A10000000000000000004B /* WaveformPeaks.swift */; };
 		E7A100000000000000000011 /* WaveformView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7A10000000000000000004C /* WaveformView.swift */; };
+		E7A100000000000000000054 /* WaveformTouchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7A100000000000000000053 /* WaveformTouchBar.swift */; };
 		E7A100000000000000000012 /* EditorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7A10000000000000000004D /* EditorModel.swift */; };
 		E7A100000000000000000013 /* EditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7A10000000000000000004E /* EditorView.swift */; };
 		E7A100000000000000000014 /* AudioToolError.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7A10000000000000000003D /* AudioToolError.swift */; };
@@ -32,34 +34,38 @@
 		E7A100000000000000000017 /* AudioFileStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7A100000000000000000042 /* AudioFileStore.swift */; };
 		E7A100000000000000000018 /* STFT.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7A100000000000000000045 /* STFT.swift */; };
 		E7A100000000000000000019 /* SpectralDenoiser.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7A100000000000000000046 /* SpectralDenoiser.swift */; };
+		E7A100000000000000000052 /* AudioEffects.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7A100000000000000000050 /* AudioEffects.swift */; };
 		E7A10000000000000000001A /* AudioEditingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7A10000000000000000004F /* AudioEditingTests.swift */; };
+		E7A100000000000000000055 /* WaveformPeaks.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7A10000000000000000004B /* WaveformPeaks.swift */; };
 		E7A10000000000000000001C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E7A10000000000000000001B /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E7A10000000000000000001B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E7A10000000000000000001D /* RadioTool.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RadioTool.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7A10000000000000000001E /* RadioToolTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RadioToolTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		E7A10000000000000000001B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		E7A10000000000000000004F /* AudioEditingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioEditingTests.swift; sourceTree = "<group>"; };
-		E7A100000000000000000042 /* AudioFileStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioFileStore.swift; sourceTree = "<group>"; };
-		E7A10000000000000000003F /* AudioSamples.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioSamples.swift; sourceTree = "<group>"; };
-		E7A10000000000000000003D /* AudioToolError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioToolError.swift; sourceTree = "<group>"; };
-		E7A100000000000000000041 /* EditSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditSession.swift; sourceTree = "<group>"; };
-		E7A10000000000000000004D /* EditorModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorModel.swift; sourceTree = "<group>"; };
-		E7A10000000000000000004E /* EditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorView.swift; sourceTree = "<group>"; };
-		E7A100000000000000000047 /* LibraryStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryStore.swift; sourceTree = "<group>"; };
-		E7A100000000000000000048 /* LibraryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryView.swift; sourceTree = "<group>"; };
-		E7A100000000000000000044 /* PlayerEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerEngine.swift; sourceTree = "<group>"; };
 		E7A10000000000000000003C /* RadioToolApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioToolApp.swift; sourceTree = "<group>"; };
-		E7A100000000000000000043 /* RecorderEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecorderEngine.swift; sourceTree = "<group>"; };
-		E7A100000000000000000049 /* RecorderModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecorderModel.swift; sourceTree = "<group>"; };
-		E7A10000000000000000004A /* RecorderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecorderView.swift; sourceTree = "<group>"; };
+		E7A10000000000000000003D /* AudioToolError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioToolError.swift; sourceTree = "<group>"; };
+		E7A10000000000000000003E /* TimeFormat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeFormat.swift; sourceTree = "<group>"; };
+		E7A10000000000000000003F /* AudioSamples.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioSamples.swift; sourceTree = "<group>"; };
 		E7A100000000000000000040 /* Recording.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recording.swift; sourceTree = "<group>"; };
+		E7A100000000000000000041 /* EditSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditSession.swift; sourceTree = "<group>"; };
+		E7A100000000000000000042 /* AudioFileStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioFileStore.swift; sourceTree = "<group>"; };
+		E7A100000000000000000043 /* RecorderEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecorderEngine.swift; sourceTree = "<group>"; };
+		E7A100000000000000000044 /* PlayerEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerEngine.swift; sourceTree = "<group>"; };
 		E7A100000000000000000045 /* STFT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STFT.swift; sourceTree = "<group>"; };
 		E7A100000000000000000046 /* SpectralDenoiser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpectralDenoiser.swift; sourceTree = "<group>"; };
-		E7A10000000000000000003E /* TimeFormat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeFormat.swift; sourceTree = "<group>"; };
+		E7A100000000000000000050 /* AudioEffects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioEffects.swift; sourceTree = "<group>"; };
+		E7A100000000000000000047 /* LibraryStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryStore.swift; sourceTree = "<group>"; };
+		E7A100000000000000000048 /* LibraryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryView.swift; sourceTree = "<group>"; };
+		E7A100000000000000000049 /* RecorderModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecorderModel.swift; sourceTree = "<group>"; };
+		E7A10000000000000000004A /* RecorderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecorderView.swift; sourceTree = "<group>"; };
 		E7A10000000000000000004B /* WaveformPeaks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaveformPeaks.swift; sourceTree = "<group>"; };
 		E7A10000000000000000004C /* WaveformView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaveformView.swift; sourceTree = "<group>"; };
+		E7A100000000000000000053 /* WaveformTouchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaveformTouchBar.swift; sourceTree = "<group>"; };
+		E7A10000000000000000004D /* EditorModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorModel.swift; sourceTree = "<group>"; };
+		E7A10000000000000000004E /* EditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorView.swift; sourceTree = "<group>"; };
+		E7A10000000000000000004F /* AudioEditingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioEditingTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,16 +86,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		E7A100000000000000000027 /* RadioTool */ = {
+		E7A100000000000000000027 = {
 			isa = PBXGroup;
 			children = (
 				E7A100000000000000000029 /* RadioTool */,
 				E7A100000000000000000032 /* RadioToolTests */,
-				E7A100000000000000000028 /* Products */,
+				E7A100000000000000000028,
 			);
 			sourceTree = "<group>";
 		};
-		E7A100000000000000000028 /* Products */ = {
+		E7A100000000000000000028 = {
 			isa = PBXGroup;
 			children = (
 				E7A10000000000000000001D /* RadioTool.app */,
@@ -132,6 +138,7 @@
 		E7A10000000000000000002C /* Audio */ = {
 			isa = PBXGroup;
 			children = (
+				E7A100000000000000000050 /* AudioEffects.swift */,
 				E7A100000000000000000042 /* AudioFileStore.swift */,
 				E7A100000000000000000044 /* PlayerEngine.swift */,
 				E7A100000000000000000043 /* RecorderEngine.swift */,
@@ -184,6 +191,7 @@
 				E7A10000000000000000004E /* EditorView.swift */,
 				E7A10000000000000000004B /* WaveformPeaks.swift */,
 				E7A10000000000000000004C /* WaveformView.swift */,
+				E7A100000000000000000053 /* WaveformTouchBar.swift */,
 			);
 			path = Editor;
 			sourceTree = "<group>";
@@ -252,7 +260,7 @@
 			};
 			buildConfigurationList = E7A100000000000000000033 /* Build configuration list for PBXProject "RadioTool" */;
 			compatibilityVersion = "Xcode 14.0";
-			developmentRegion = zh-Hans;
+			developmentRegion = "zh-Hans";
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
@@ -260,7 +268,7 @@
 				"zh-Hans",
 			);
 			mainGroup = E7A100000000000000000027;
-			productRefGroup = E7A100000000000000000028 /* Products */;
+			productRefGroup = E7A100000000000000000028;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -297,12 +305,14 @@
 				E7A100000000000000000009 /* PlayerEngine.swift in Sources */,
 				E7A10000000000000000000A /* STFT.swift in Sources */,
 				E7A10000000000000000000B /* SpectralDenoiser.swift in Sources */,
+				E7A100000000000000000051 /* AudioEffects.swift in Sources */,
 				E7A10000000000000000000C /* LibraryStore.swift in Sources */,
 				E7A10000000000000000000D /* LibraryView.swift in Sources */,
 				E7A10000000000000000000E /* RecorderModel.swift in Sources */,
 				E7A10000000000000000000F /* RecorderView.swift in Sources */,
 				E7A100000000000000000010 /* WaveformPeaks.swift in Sources */,
 				E7A100000000000000000011 /* WaveformView.swift in Sources */,
+				E7A100000000000000000054 /* WaveformTouchBar.swift in Sources */,
 				E7A100000000000000000012 /* EditorModel.swift in Sources */,
 				E7A100000000000000000013 /* EditorView.swift in Sources */,
 			);
@@ -318,6 +328,8 @@
 				E7A100000000000000000017 /* AudioFileStore.swift in Sources */,
 				E7A100000000000000000018 /* STFT.swift in Sources */,
 				E7A100000000000000000019 /* SpectralDenoiser.swift in Sources */,
+				E7A100000000000000000052 /* AudioEffects.swift in Sources */,
+				E7A100000000000000000055 /* WaveformPeaks.swift in Sources */,
 				E7A10000000000000000001A /* AudioEditingTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -328,7 +340,6 @@
 		E7A100000000000000000036 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
@@ -357,32 +368,29 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
-				GCC_NO_COMMON_BLOCKS = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
-				MACOSX_DEPLOYMENT_TARGET = 14.0;
-				SDKROOT = auto;
-				SWIFT_VERSION = 5.0;
-
 				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
 				);
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = auto;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
 		E7A100000000000000000037 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
@@ -409,38 +417,35 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
-				SDKROOT = auto;
-				SWIFT_VERSION = 5.0;
-
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				ENABLE_NS_ASSERTIONS = NO;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = auto;
 				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_VERSION = 5.0;
 				VALIDATE_PRODUCT = YES;
-
 			};
 			name = Release;
 		};
 		E7A100000000000000000038 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = "";
-				"CODE_SIGN_ENTITLEMENTS[sdk=macosx*]" = RadioTool/RadioTool.entitlements;
-				"CODE_SIGN_IDENTITY[sdk=iphonesimulator*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
-				CODE_SIGN_STYLE = Manual;
 				"CODE_SIGNING_ALLOWED[sdk=iphonesimulator*]" = NO;
 				"CODE_SIGNING_REQUIRED[sdk=iphonesimulator*]" = NO;
+				"CODE_SIGN_ENTITLEMENTS[sdk=macosx*]" = RadioTool/RadioTool.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=iphonesimulator*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 8AAGQHTAMN;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = "录音剪辑";
@@ -465,24 +470,23 @@
 				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				TARGETED_DEVICE_FAMILY = 1;
-
 			};
 			name = Debug;
 		};
 		E7A100000000000000000039 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = "";
-				"CODE_SIGN_ENTITLEMENTS[sdk=macosx*]" = RadioTool/RadioTool.entitlements;
-				"CODE_SIGN_IDENTITY[sdk=iphonesimulator*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
-				CODE_SIGN_STYLE = Manual;
 				"CODE_SIGNING_ALLOWED[sdk=iphonesimulator*]" = NO;
 				"CODE_SIGNING_REQUIRED[sdk=iphonesimulator*]" = NO;
+				"CODE_SIGN_ENTITLEMENTS[sdk=macosx*]" = RadioTool/RadioTool.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=iphonesimulator*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 8AAGQHTAMN;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = "录音剪辑";
@@ -507,20 +511,23 @@
 				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				TARGETED_DEVICE_FAMILY = 1;
-
 			};
 			name = Release;
 		};
 		E7A10000000000000000003A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-
 				BUNDLE_LOADER = "";
 				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.enhoo.radioToolTests;
@@ -529,25 +536,23 @@
 				SUPPORTED_PLATFORMS = macosx;
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				TEST_HOST = "";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-					"@loader_path/../Frameworks",
-				);
-
 			};
 			name = Debug;
 		};
 		E7A10000000000000000003B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-
 				BUNDLE_LOADER = "";
 				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.enhoo.radioToolTests;
@@ -556,12 +561,6 @@
 				SUPPORTED_PLATFORMS = macosx;
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				TEST_HOST = "";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-					"@loader_path/../Frameworks",
-				);
-
 			};
 			name = Release;
 		};

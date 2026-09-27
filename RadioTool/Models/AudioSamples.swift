@@ -19,6 +19,16 @@ struct AudioSamples: Equatable, Sendable {
         )
     }
 
+    func inserting(_ clip: AudioSamples, at frame: Int) -> AudioSamples {
+        let index = min(max(0, frame), frameCount)
+        var updated = channels
+        for channelIndex in updated.indices {
+            let incoming = channelIndex < clip.channels.count ? clip.channels[channelIndex] : []
+            updated[channelIndex].insert(contentsOf: incoming, at: index)
+        }
+        return AudioSamples(sampleRate: sampleRate, channels: updated)
+    }
+
     func deleting(_ range: Range<Int>) -> AudioSamples {
         let clamped = clamp(range)
         return AudioSamples(

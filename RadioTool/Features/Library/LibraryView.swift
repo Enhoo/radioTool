@@ -6,7 +6,9 @@ struct LibraryView: View {
     @State private var showRecorder = false
     @State private var showImporter = false
     @State private var selection: UUID?
+    @State private var path: [UUID] = []
     @State private var pendingDelete: UUID?
+    @State private var pendingNavigation: PendingNavigation?
     @State private var alertMessage: String?
 
     @MainActor
@@ -21,9 +23,17 @@ struct LibraryView: View {
                 sidebar
                     .navigationSplitViewColumnWidth(min: 240, ideal: 280)
             } detail: {
-                if let selection, store.recording(id: selection) != nil {
-                    EditorView(recordingID: selection, store: store)
-                        .id(selection)
+                if let currentID = selection, store.recording(id: currentID) != nil {
+                    EditorView(
+                        recordingID: currentID,
+                        store: store,
+                        onCreatedRecording: { newID in
+                            selection = newID
+                        },
+                        onResolveUnsaved: { continueNavigation() },
+                        onCancelUnsaved: { pendingNavigation = nil }
+                    )
+                    .id(currentID)
                 } else {
                     ContentUnavailableView(
                         "没有选择录音",
@@ -33,10 +43,19 @@ struct LibraryView: View {
                 }
             }
             #else
-            NavigationStack {
+            NavigationStack(path: $path) {
                 sidebar
                     .navigationDestination(for: UUID.self) { id in
-                        EditorView(recordingID: id, store: store)
+                        EditorView(
+                            recordingID: id,
+                            store: store,
+                            onCreatedRecording: { newID in
+                                path = [newID]
+                            },
+                            onAttemptLeave: { requestLeave() },
+                            onResolveUnsaved: { continueNavigation() },
+                            onCancelUnsaved: { pendingNavigation = nil }
+                        )
                     }
             }
             #endif
@@ -49,7 +68,9 @@ struct LibraryView: View {
             case .success(let url):
                 do {
                     try store.importAudio(from: url)
-                    selection = store.recordings.first?.id
+                    if let imported = store.recordings.first?.id {
+                        openRecording(imported)
+                    }
                 } catch {
                     alertMessage = error.localizedDescription
                 }
@@ -67,6 +88,13 @@ struct LibraryView: View {
                 if let pendingDelete {
                     if selection == pendingDelete {
                         selection = nil
+                    }
+                    if path.last == pendingDelete {
+                        path = []
+                    }
+                    if store.unsaved.recordingID == pendingDelete {
+                        store.unsaved.isDirty = false
+                        store.unsaved.resetActions()
                     }
                     store.delete(id: pendingDelete)
                 }
@@ -92,28 +120,95 @@ struct LibraryView: View {
     }
 
     private var recordingList: some View {
-        #if os(macOS)
-        List(selection: $selection) {
-            ForEach(store.recordings) { recording in
-                row(recording)
-                    .tag(recording.id)
-                    .contextMenu { deleteButton(recording.id) }
-            }
-        }
-        #else
         List {
             ForEach(store.recordings) { recording in
-                NavigationLink(value: recording.id) {
-                    row(recording)
+                Button {
+                    openRecording(recording.id)
+                } label: {
+                    recordingRow(recording)
                 }
+                .buttonStyle(.plain)
+                #if os(macOS)
+                .listRowBackground(selection == recording.id ? Color.accentColor.opacity(0.22) : Color.clear)
+                .contextMenu { deleteButton(recording.id) }
+                #else
                 .swipeActions {
                     Button("删除", role: .destructive) {
                         pendingDelete = recording.id
                     }
                 }
+                #endif
             }
         }
+    }
+
+    private func recordingRow(_ recording: Recording) -> some View {
+        HStack {
+            row(recording)
+            Spacer(minLength: 0)
+            #if os(iOS)
+            Image(systemName: "chevron.right")
+                .font(.footnote.weight(.semibold))
+                .foregroundStyle(.tertiary)
+            #endif
+        }
+        .contentShape(Rectangle())
+    }
+
+    private func openRecording(_ id: UUID) {
+        #if os(iOS)
+        let current = path.last
+        #else
+        let current = selection
         #endif
+        guard id != current else { return }
+        attempt(navigation: .open(id), from: current)
+    }
+
+    private func requestLeave() {
+        #if os(iOS)
+        let current = path.last
+        #else
+        let current = selection
+        #endif
+        attempt(navigation: .leave, from: current)
+    }
+
+    private func attempt(navigation: PendingNavigation, from current: UUID?) {
+        if store.unsaved.isProcessing, store.unsaved.recordingID == current {
+            alertMessage = "正在处理当前录音，请稍后再切换。"
+            return
+        }
+        if let current, store.unsaved.recordingID == current, store.unsaved.isDirty {
+            pendingNavigation = navigation
+            store.confirmUnsaved = true
+            return
+        }
+        perform(navigation)
+    }
+
+    private func continueNavigation() {
+        guard let pendingNavigation else { return }
+        let navigation = pendingNavigation
+        self.pendingNavigation = nil
+        perform(navigation)
+    }
+
+    private func perform(_ navigation: PendingNavigation) {
+        switch navigation {
+        case .open(let id):
+            #if os(iOS)
+            path = [id]
+            #else
+            selection = id
+            #endif
+        case .leave:
+            #if os(iOS)
+            path = []
+            #else
+            selection = nil
+            #endif
+        }
     }
 
     private func row(_ recording: Recording) -> some View {
@@ -179,4 +274,9 @@ struct LibraryView: View {
             }
         )
     }
+}
+
+private enum PendingNavigation {
+    case open(UUID)
+    case leave
 }

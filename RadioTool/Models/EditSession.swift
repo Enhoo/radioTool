@@ -20,7 +20,7 @@ final class EditSession {
 
     init(samples: AudioSamples) {
         self.samples = samples
-        self.selection = 0..<samples.frameCount
+        self.selection = 0..<0
         self.playhead = 0
     }
 
@@ -38,12 +38,18 @@ final class EditSession {
             selection = 0..<0
             return
         }
-        let lo = min(max(0, lower), count - 1)
-        var hi = min(max(0, upper), count)
-        if hi <= lo {
-            hi = min(count, lo + 1)
-        }
+        let lo = min(max(0, lower), count)
+        let hi = min(max(lo, upper), count)
         selection = lo..<hi
+    }
+
+    func insert(_ clip: AudioSamples, after frame: Int) {
+        guard clip.frameCount > 0, samples.frameCount > 0 else { return }
+        pushUndo()
+        let index = min(max(0, frame + 1), samples.frameCount)
+        samples = samples.inserting(clip, at: index)
+        selection = 0..<0
+        setPlayhead(min(frame, samples.frameCount - 1))
     }
 
     @discardableResult
@@ -51,7 +57,7 @@ final class EditSession {
         guard selection.count > 0, selection.count < samples.frameCount else { return false }
         pushUndo()
         samples = samples.trimming(to: selection)
-        selection = 0..<samples.frameCount
+        selection = 0..<0
         playhead = 0
         return true
     }
@@ -62,7 +68,7 @@ final class EditSession {
         pushUndo()
         let join = selection.lowerBound
         samples = samples.deleting(selection)
-        selection = 0..<samples.frameCount
+        selection = 0..<0
         setPlayhead(join)
         return true
     }
